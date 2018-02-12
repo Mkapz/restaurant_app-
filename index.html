@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Home page</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="text-center"> Classy Restaurant</h1>
+            <hr>
+            <h2 class="text-center">We only have 5 tables and you probably will not get one </h2>
+            <br>
+
+            <div class="text-center">
+                <a href="/tables">
+                    <button type="button" class="btn btn-lg btn-primary">
+                        </span> View Tables</button>
+                </a>
+                <a href="/reserve">
+                    <button type="button" class="btn btn-lg btn-danger">Make Reservation</button>
+                </a>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    <a href="/tables/view">API Table links</a> |
+                    <a href="/waitlist/view">API wait list</a> |
+                    <a id="clearTables">Clear tables</a>
+                </p>
+            </div>
+        </footer>
+
+    </div>
+    <script>
+        $("#clearTables").on("click", function (event) {
+            event.preventDefault();
+            $.post("/tables/clear").done(function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+</body>
+
+</html>
